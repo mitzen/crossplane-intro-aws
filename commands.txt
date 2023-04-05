@@ -1,0 +1,15 @@
+
+# generate secret for aws 
+kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt
+
+
+kubectl delete secret/aws-secret -n crossplane-system 
+
+kubectl create -f s3.yaml 
+
+kubectl get bucket 
+kubectl describe bucket 
+kubectl delete bucket crossplane-bucket-xqkhw
+
+
+kubectl apply -f provider-config.yaml
